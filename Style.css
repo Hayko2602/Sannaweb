@@ -1,0 +1,271 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+header, footer {
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+
+
+/* Header layout */
+/*header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: #333;
+  color: #fff;
+}*/
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+/* Desktop menu */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+}
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+/* Hamburger icon (hidden on desktop) */
+.hamburger {
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+  color: white;
+}
+
+
+/*===============================================  HTML page  ========================================================= */
+.sections {
+  /*padding-top: 70px; /* adjust if your header is taller */
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Each section = full screen height */
+.sec {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+}
+/*_____________ SECTION 1 ____________________*/
+.sec1 {
+  position: relative;
+  overflow: hidden;
+}
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+/* content stays on top of video */
+.sec1 .content {
+  position: relative;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/*_____________ SECTION 2 ____________________*/
+.sec2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #555, #000);
+  padding: 40px;
+  gap: 40px;
+}
+/* left text area */
+.sec2-left {
+  flex: 1;
+  color: white;
+}
+.sec2-title {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+.sec2-desc {
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 500px;
+}
+/* right image area */
+.sec2-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.sec2-img {
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .sec2 {
+    flex-direction: column;
+    text-align: center;
+  }
+  .sec2-img {
+    width: 60%;
+  }
+}
+
+
+/*_____________ SECTION 3 ____________________*/
+
+.sec3 {
+  background: linear-gradient(to bottom, #555, #000);
+  padding: 100px 40px 60px 40px;
+  text-align: center;
+  display: block;
+}
+/* Make title full-width (block) and not part of the flex row */
+.sec3-title {
+  width: 100%;
+  display: block;
+  margin-bottom: 40px;
+  font-size: 48px;
+  color: white;
+  /* animation */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s ease;
+}
+/* Left + right content row */
+.sec3-content {
+  display: flex;
+  gap: 40px;
+  color: white;
+  justify-content: center;
+  align-items: flex-start;
+  /* animation */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.8s ease;
+}
+/* Mobile view */
+@media (max-width: 768px) {
+  .sec3-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+
+/* Optional background colors for visibility */
+/*.sec:nth-child(1) { background: #1abc9c; }*/
+/*.sec:nth-child(2) { background: #3498db; }
+.sec:nth-child(3) { background: #9b59b6; }*/
+.sec:nth-child(4) { background: #f39c12; }
+.sec:nth-child(5) { background: #e67e22; }
+.sec:nth-child(6) { background: #e74c3c; }
+
+
+/*Html page */
+.grid-container {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.bord{
+  border: 1px, 1px, solid, black;
+}
+.box {
+  background: #e2e2e2;
+  padding: 40px;
+  text-align: center;
+  border-radius: 6px;
+}
+/*====================================================*/
+/*=============       Media parts     ================*/
+/*====================================================*/
+/* ----------------------------- */
+/* MOBILE FIXED VERSION */
+/* ----------------------------- */
+@media (max-width: 768px) {
+  /* Hide menu by default */
+  .nav-links {
+    display: none !important;
+    flex-direction: column;
+    background: #222;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    width: 60%;
+    padding: 10px 0;
+  }
+  .nav-links li {
+    text-align: center;
+    padding: 12px 0;
+  }
+  /* Show only hamburger */
+  .hamburger {
+    display: block;
+  }
+  /* When hamburger clicked → menu becomes visible */
+  .nav-links.active {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+    flex-direction: column;
+    background: #222;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    width: 60%;
+    padding: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.35s ease;
+  }
+  .nav-links li {
+    text-align: center;
+    padding: 15px 0;
+  }
+  .hamburger {
+    display: block;
+  }
+  /* Smooth animation when menu becomes active */
+  .nav-links.active {
+    display: flex !important;
+    opacity: 1;
+    padding: 10px 0;
+    transform: translateY(0);
+  }
+}
+
